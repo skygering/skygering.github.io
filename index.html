@@ -7,26 +7,21 @@
   <style>
     div {
       margin-left: 30px;
-    }
-    .img-container {
-        text-align: center;
-        display: block;
+      margin-right: 30px;
     }
     p {
       text-indent: 30px
     }
     figcaption {
-      font-size: smaller;
+      font-size: small;
       margin: 0.75em;
+      text-align: left;
     }
     img {
       margin: 0.5em;
     }
     figure {
       width: 70%;
-      text-align: center;
-      font-style: italic;
-      font-size: smaller;
       text-indent: 0;
       border: thin silver solid;
       margin: 0.5em;
@@ -55,7 +50,7 @@
     <div>
       <center><figure>
         <img src="hector.png" alt="" width="600" height="350">
-        <figcaption>Figure 1: Hector's representation of the carbon cycle is split into three boxes, with eight carbon pools in all. 
+        <figcaption><b>Figure 1:</b> Hector's representation of the carbon cycle is split into three boxes, with eight carbon pools in all. 
           The first box is the atmosphere, which reads in time series for emissions. This then affects the energy balance and affects the land box and the ocean box. 
           The ocean box is split into four pools: low- and high-latitude surface (both with active chemistry), intermediate water, and deep water. 
           Finally, the land box represents the movement of  carbon from vegetation to detritus and finally to soil. 
@@ -70,7 +65,7 @@
     <div>
       <center><figure>
         <img src="carbon_pools.png" alt="" width="600" height="350">
-        <figcaption>Figure 2: Hector's current output records the overall size of carbon pools-here, the atmosphere, detritus, soil, and vegetation pools-for a RCP 8.5 model run with only one terrestrial biome from 1850 to 2300. 
+        <figcaption><b>Figure 2:</b> Hector's current output records the overall size of carbon pools-here, the atmosphere, detritus, soil, and vegetation pools-for a RCP 8.5 model run with only one terrestrial biome from 1850 to 2300. 
           The ocean pool is not plotted above due to its significantly larger carbon storage capabilities. 
           Note the large increase in atmospheric carbon in this scenario and the moderate increase in vegetation carbon; soil initially increases, but then decreases near the end of the run, likely due to increased decomposition, leading to the soil becoming a carbon source rather than a carbon sink. 
         </figcaption>
@@ -99,7 +94,7 @@
     <center><figure>
       <img src="fluxpool.png" alt="" width="600" height="350">
       <figcaption>
-        Figure 3: Flux creation, pool and flux addition, and pool and flux subtraction within Hector when tracking. 
+        <b>Figure 3:</b> Flux creation, pool and flux addition, and pool and flux subtraction within Hector when tracking. 
         Fluxes are created from existing pools and represent carbon leaving one pool and moving to another. 
         When a flux is created (shown above through multiplication), it has the same origin fractions as the pool it is created from. 
         When a flux and a pool are added, the total value of the pool increases and its carbon origin fractions are updated to include the carbon introduced by the flux. 
@@ -144,14 +139,14 @@
           <div class="accordion-body">
             <div>
               <center><img src="atmos_website.png" alt="" width="530" height="350"></center>
-              <figcaption>Figure 4: Total value of carbon from each origin pool within the atmosphere over time. 
+              <figcaption><b>Figure 4:</b> Total value of carbon from each origin pool within the atmosphere over time. 
                 After 1900, atmospheric carbon grows quickly due to an influx of fossil fuel carbon. 
                 Over the course of the run, the amount of carbon from the atmosphere, detritus, vegetation, and soil stays largely the same within the atmosphere pool. 
               </figcaption>
             </div>
             <div>
               <center><img src="atmos_color.gif" alt="" width="450" height="550"></center>
-              <figcaption>This animation shows the increasing proportion of the atmosphere carbon pool that is made up of carbon from fossil fuels. 
+              <figcaption><b>Animation 1:</b> This animation shows the increasing proportion of the atmosphere carbon pool that is made up of carbon from fossil fuels. 
                 As the animation progresses and the amount of carbon stored in the atmosphere rises, the proportion of carbon from fossil fuels goes from a negligible percent to a majority of the carbon within the pool. </figcaption>
             </div>
           </div>
@@ -170,13 +165,13 @@
             <div>
               <center><img src="soil_website.png" alt="" width="530" height="350"></center>
               <figcaption>
-                Figure 5: The total amount of carbon in the soil first increases up to around year 2150 and then decreases due to first increasing land carbon sequestration (because of rising CO2) and then increasing losses (due to rising temperatures and saturation of CO2 fertilization). 
+                <b>Figure 5:</b> The total amount of carbon in the soil first increases up to around year 2150 and then decreases due to first increasing land carbon sequestration (because of rising CO2) and then increasing losses (due to rising temperatures and saturation of CO2 fertilization). 
                 At this point, soil turns from a carbon sink into a carbon source. We see in this figure as well that the amount of fossil fuel carbon within the pool grows rapidly after 1900, leading to over half of the pool comprised of carbon originating from fossil fuels by the later half of the run.
               </figcaption>
             </div>
               <center><img src="soil_color.gif" alt="" width="450" height="550"></center>
               <figcaption>
-                Animation 2: This animation show the increasing proportion of carbon in the soil pool originating from fossil fuels over time. 
+                <b>Animation 2:</b> This animation show the increasing proportion of carbon in the soil pool originating from fossil fuels over time. 
                 Note that shortly after 2100, the total amount of carbon in the soil dips down dramatically. 
                 Although the run after 2100 is not calibrated and thus we need to be careful drawing conclusions, we make the hypothesis that this happens due to the soil pool turning into a carbon source rather than a sink as explained in Figure 5. 
                 Note that even when the overall carbon in the soil starts to decline, the proportion of the carbon from fossil fuels does not decrease. 
@@ -199,7 +194,7 @@
             <div>
               <center><img src="veg_website.png" alt="" width="530" height="350"></center>
               <figcaption>
-                Figure 6: In the above figure, we see that the total amount of carbon increase from 1850 to 2100 within the vegetation pool and a large amount of this increase is due to the influx of fossil fuel carbon. 
+                <b>Figure 6:</b> In the above figure, we see that the total amount of carbon increase from 1850 to 2100 within the vegetation pool and a large amount of this increase is due to the influx of fossil fuel carbon. 
                 We see that by 2300 the vegetation pool seems to be nearing a steady state. 
                 However, note again that Hector is only calibrated through 2100,  at which point the level of carbon stored within vegetation is still growing rapidly. 
               </figcaption>
@@ -207,7 +202,7 @@
             </div>
             <center><img src="veg_color.gif" alt="" width="450" height="550"></center>
             <figcaption>
-              Animation 3: This animation shows the increasing proportion of the vegetation pool made up from carbon origination from fossil fuels even as the overall amount of carbon in of the vegetation pool grows. 
+              <b>Animation 3:</b> This animation shows the increasing proportion of the vegetation pool made up from carbon origination from fossil fuels even as the overall amount of carbon in of the vegetation pool grows. 
               We can see this as the piechart representing origin of carbon within the vegetation pool becomes a majority from fossil fuels by 2100. 
             </figcaption>
             <div>
@@ -225,9 +220,9 @@
           data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <div>
-              <center><img src="ocean_top_website.png" alt="" width="530" height="350"></center>
+              <center><img src="ocean_website.png" alt="" width="530" height="350"></center>
               <figcaption>
-                Figure 7: Note that due to its large size as a carbon sink, the carbon entering the ocean over the course of a run barely affects the overall composition of the pool. 
+                <b>Figure 7:</b> Note that due to its large size as a carbon sink, the carbon entering the ocean over the course of a run barely affects the overall composition of the pool. 
                 However, we do see that there is increased levels of carbon in the pool in the later half of the run. 
                 For greater details on the composition of this new carbon, see Figure 8. 
                 Due to the way that ocean-atmosphere flux is currently implemented, for most time steps we only have flux from atmosphere to ocean as we take take the “overall” flux between the two pools and just move carbon in one direction. 
@@ -236,9 +231,9 @@
               </figcaption>
             </div>
             <div>
-              <center><img src="ocean_website.png" alt="" width="530" height="350"></center>
+              <center><img src="ocean_top_website.png" alt="" width="530" height="350"></center>
               <figcaption>
-                Figure 8: This graph shows the influx of carbon into the ocean pool over the course of one model run. 
+                <b>Figure 8:</b> This graph shows the influx of carbon into the ocean pool over the course of one model run. 
                 We see that despite the amount appearing very small in Figure 7, we have actually added over 2,000 petagrams of carbon to the ocean pool. 
                 Additionally, note that around half of the added carbon is from fossil fuels. 
               </figcaption>
@@ -246,7 +241,7 @@
             </div>
             <center><img src="ocean_color.gif" alt="" width="450" height="550"></center>
             <figcaption>
-              Animation 4: First, not the high level of carbon stored within the ocean. 
+              <b>Animation 4:</b> First, not the high level of carbon stored within the ocean. 
               Thus, while around 2,000 petagrams are added over the course of this run, proportionally, that represents a small amount of the carbon stored within the ocean. 
               This can be seen through the slow change of the pie chart throughout the animation even as the total amount of carbon rises. 
             </figcaption>
