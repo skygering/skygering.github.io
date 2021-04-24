@@ -21,7 +21,7 @@
       margin: 0.5em;
     }
     figure {
-      width: 70%;
+      width: 50%;
       text-indent: 0;
       border: thin silver solid;
       margin: 0.5em;
@@ -35,6 +35,7 @@
     <h1 style="text-align: center;">Tracking Carbon Flows through the Biosphere in Hector</h1>
     <h5 style="text-align: center;"> Skylar Gering<sup>1,2</sup>, Benjamin Bond-Lamberty<sup>2</sup>, Dawn Woodard<sup>2</sup></h5>
     <h6 style="text-align: center;"> <sup>1</sup> Harvey Mudd College, <sup>2</sup> Pacific Northwest National Laboratory</h6>
+    <h5 style="text-align: center;">Contact Information: skygering@gmail.com</h5>
   </header>
   <div>
     <h2>Introduction</h2>
@@ -49,23 +50,24 @@
     </p>
     <div>
       <center><figure>
-        <img src="hector.png" alt="" width="600" height="350">
-        <figcaption><b>Figure 1:</b> Hector's representation of the carbon cycle is split into three boxes, with eight carbon pools in all. 
-          The first box is the atmosphere, which reads in time series for emissions. This then affects the energy balance and affects the land box and the ocean box. 
+        <img src="hector.png" alt="" width="100%">
+        <figcaption><b>Figure 1:</b> Hector is a three-box model, with eight carbon storage pools. 
+          The first box is the atmosphere, which reads in time series for emissions. 
+          This then affects the energy balance and affects the land box and the ocean box. 
           The ocean box is split into four pools: low- and high-latitude surface (both with active chemistry), intermediate water, and deep water. 
-          Finally, the land box represents the movement of  carbon from vegetation to detritus and finally to soil. 
+          Finally, the land box represents the movement of  carbon from vegetation to detritus to soil. 
           Hector also allows users to define multiple terrestrial biomes. Image credit: Kalyn Dorheim.
         </figcaption>
       </figure></center>
 
     </div>
-    <p>However, Hector does not currently have the capability to track the movement of carbon within the model-meaning that, for example, users cannot reconstruct the original source pools of the carbon in each pool at each timestep. 
+    <p>However, Hector does not currently have the capability to track the movement of carbon within the model, meaning that, for example, users cannot reconstruct the original source pools of the carbon in each pool. 
       Instead, it only reports the total carbon stored in each pool at any given time step (Figure 2).
     </p>
     <div>
       <center><figure>
-        <img src="carbon_pools.png" alt="" width="600" height="350">
-        <figcaption><b>Figure 2:</b> Hector's current output records the overall size of carbon pools-here, the atmosphere, detritus, soil, and vegetation pools-for a RCP 8.5 model run with only one terrestrial biome from 1850 to 2300. 
+        <img src="carbon_pools.png" alt="" width="100%">
+        <figcaption><b>Figure 2:</b> Hector's current output records the overall size of carbon pools-atmosphere, detritus, soil, and vegetation pools are shown above-for a RCP 8.5 model run with only one terrestrial biome from 1850 to 2300. 
           The ocean pool is not plotted above due to its significantly larger carbon storage capabilities. 
           Note the large increase in atmospheric carbon in this scenario and the moderate increase in vegetation carbon; soil initially increases, but then decreases near the end of the run, likely due to increased decomposition, leading to the soil becoming a carbon source rather than a carbon sink. 
         </figcaption>
@@ -86,13 +88,13 @@
     </p>
     <p> Fluxes are created from an existing pool and have the same origin proportions as the pools they originate from-i.e., if we create a 25 petagram carbon flux from the atmosphere, we assume that the atmosphere pool is well-mixed and remove carbon in equal proportions from each of the origin sub-pools within the atmosphere. 
       The resulting 25 Pg C flux thus has the exact same origin fractions as the atmosphere at that point in time. 
-      The addition of a flux to pool is what changes the origin proportions of that pool. 
+      The addition of a flux to a pool is what changes the origin proportions of that pool. 
       For example, if we add a 25 petagram flux of carbon from the atmosphere pool to the vegetation pool, 25 petagrams of carbon will be added to the total value of the vegetation pool, and the origin proportions of that flux carbon (which as noted above matches that of the atmosphere) are added to the vegetation pool's list of origins for its already existing carbon. 
       Subtraction is simpler as we continue our assumption that the pools are well mixed: we remove carbon from the pool in equal proportions to the carbon within the pool, simply decreasing the total value of carbon.  
       In this way, each pool keeps track of where its carbon originated from and we are able to watch the pools' composition change over time through these pool-to-pool transfers.  
     </p>
     <center><figure>
-      <img src="fluxpool.png" alt="" width="600" height="350">
+      <img src="fluxpool.png" alt="" width="100%">
       <figcaption>
         <b>Figure 3:</b> Flux creation, pool and flux addition, and pool and flux subtraction within Hector when tracking. 
         Fluxes are created from existing pools and represent carbon leaving one pool and moving to another. 
@@ -101,17 +103,16 @@
         When carbon is subtracted from a pool, it is removed proportionally from the pool due to our well-mixed assumption.
       </figcaption>
     </figure></center>
-    <p>Hector tracks carbon in the atmosphere, vegetation, soil, detritus, and ocean; Hector can also run multiple terrestrial biomes. 
+    <p>Hector tracks carbon in the atmosphere, vegetation, soil, detritus, and ocean and can run multiple terrestrial biomes. 
       We can also add additional pools, like fossil fuels, whose carbon we want to track. 
       Each of these pools is initialized with a starting amount of carbon at the beginning of a run and tracking is turned on at a time specified by the user. 
       For each time step within a run, we calculate all expected fluxes into and out of each pool (e.g. net primary production and land use change) and add/subtract these fluxes from our pools. 
       When tracking is on, the origin of the carbon in each pool is updated as described above. 
       If tracking is not on, the total amount of carbon within the pool is changed but the origin proportions stay the same. 
-      This process, with a few additional adjustments, repeats every timestep. 
-      If you would like more detailed technical information, please contact the author. 
+      This process, with a few additional adjustments, repeats every timestep.
     </p>
     <p>We also want to note that all of the changes to Hector's code are backwards compatible with previous versions of Hector and running Hector with tracking is completely optional. 
-      When tracking is not enabled, adding and subtracting fluxes from a pool just functions as standard arithmetic operations that only keep track of the pool's overall value and not the carbons' origin fractions.
+      When tracking is not enabled, adding and subtracting fluxes from a pool functions as standard arithmetic operations that only keep track of the pool's overall value and not the carbons' origin fractions.
     </p>
   </div>
   <div>
@@ -124,8 +125,9 @@
       We include the results between 2100 to 2300 to demonstrate interesting behavior within the soil pool.  
       Note that at the beginning of each run, every pool of carbon is composed entirely of carbon from that pool, and thus the initial fluxes of carbon start off with high proportions of carbon from a single pool before they equilibrate. 
       Thus in the first several years of the run, we can see a rapid rebalancing effect until the pools come into more of a steady state with respect to the distribution of source carbon in each pool. 
-      At the same time, an increasing amount of carbon from fossil fuels is being added to the system, which we can see  especially in atmosphere, soil, and vegetation pools in Hector relative to their size.
+      At the same time, an increasing amount of carbon from fossil fuels is being added to the system, which we can see especially in atmosphere, soil, and vegetation pools in Hector relative to their size.
     </p>
+    <p>Code for making the plots and animations is available at the author’s GitHub page <a href="https://github.com/skygering/EGU_Visualizations">here</a>.</p>
     <div class="accordion" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
@@ -138,14 +140,14 @@
           data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <div>
-              <center><img src="atmos_website.png" alt="" width="530" height="350"></center>
+              <center><img src="atmos_website.png" alt="" width="50%"></center>
               <figcaption><b>Figure 4:</b> Total value of carbon from each origin pool within the atmosphere over time. 
                 After 1900, atmospheric carbon grows quickly due to an influx of fossil fuel carbon. 
                 Over the course of the run, the amount of carbon from the atmosphere, detritus, vegetation, and soil stays largely the same within the atmosphere pool. 
               </figcaption>
             </div>
             <div>
-              <center><img src="atmos_color.gif" alt="" width="450" height="550"></center>
+              <center><img src="atmos_color.gif" alt="" width="45%"></center>
               <figcaption><b>Animation 1:</b> This animation shows the increasing proportion of the atmosphere carbon pool that is made up of carbon from fossil fuels. 
                 As the animation progresses and the amount of carbon stored in the atmosphere rises, the proportion of carbon from fossil fuels goes from a negligible percent to a majority of the carbon within the pool. </figcaption>
             </div>
@@ -163,15 +165,15 @@
           data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <div>
-              <center><img src="soil_website.png" alt="" width="530" height="350"></center>
+              <center><img src="soil_website.png" alt="" width="50%"></center>
               <figcaption>
                 <b>Figure 5:</b> The total amount of carbon in the soil first increases up to around year 2150 and then decreases due to first increasing land carbon sequestration (because of rising CO2) and then increasing losses (due to rising temperatures and saturation of CO2 fertilization). 
                 At this point, soil turns from a carbon sink into a carbon source. We see in this figure as well that the amount of fossil fuel carbon within the pool grows rapidly after 1900, leading to over half of the pool comprised of carbon originating from fossil fuels by the later half of the run.
               </figcaption>
             </div>
-              <center><img src="soil_color.gif" alt="" width="450" height="550"></center>
+              <center><img src="soil_color.gif" alt="" width="45%"></center>
               <figcaption>
-                <b>Animation 2:</b> This animation show the increasing proportion of carbon in the soil pool originating from fossil fuels over time. 
+                <b>Animation 2:</b> This animation shows the increasing proportion of carbon in the soil pool originating from fossil fuels over time. 
                 Note that shortly after 2100, the total amount of carbon in the soil dips down dramatically. 
                 Although the run after 2100 is not calibrated and thus we need to be careful drawing conclusions, we make the hypothesis that this happens due to the soil pool turning into a carbon source rather than a sink as explained in Figure 5. 
                 Note that even when the overall carbon in the soil starts to decline, the proportion of the carbon from fossil fuels does not decrease. 
@@ -192,18 +194,18 @@
           data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <div>
-              <center><img src="veg_website.png" alt="" width="530" height="350"></center>
+              <center><img src="veg_website.png" alt="" width="50%"></center>
               <figcaption>
-                <b>Figure 6:</b> In the above figure, we see that the total amount of carbon increase from 1850 to 2100 within the vegetation pool and a large amount of this increase is due to the influx of fossil fuel carbon. 
+                <b>Figure 6:</b> In the above figure, we see that the total amount of carbon increases from 1850 to 2100 within the vegetation pool and a large amount of this increase is due to the influx of fossil fuel carbon. 
                 We see that by 2300 the vegetation pool seems to be nearing a steady state. 
                 However, note again that Hector is only calibrated through 2100,  at which point the level of carbon stored within vegetation is still growing rapidly. 
               </figcaption>
             </div>
             </div>
-            <center><img src="veg_color.gif" alt="" width="450" height="550"></center>
+            <center><img src="veg_color.gif" alt="" width="45%"></center>
             <figcaption>
-              <b>Animation 3:</b> This animation shows the increasing proportion of the vegetation pool made up from carbon origination from fossil fuels even as the overall amount of carbon in of the vegetation pool grows. 
-              We can see this as the piechart representing origin of carbon within the vegetation pool becomes a majority from fossil fuels by 2100. 
+              <b>Animation 3:</b> This animation shows the increasing proportion of the vegetation pool made up of carbon from fossil fuels as the overall amount of carbon in the vegetation pool grows. 
+              We can see this as the pie chart representing the origin of carbon within the vegetation pool becomes a majority from fossil fuels by 2100.
             </figcaption>
             <div>
           </div>
@@ -220,18 +222,18 @@
           data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <div>
-              <center><img src="ocean_website.png" alt="" width="530" height="350"></center>
+              <center><img src="ocean_website.png" alt="" width="50%"></center>
               <figcaption>
                 <b>Figure 7:</b> Note that due to its large size as a carbon sink, the carbon entering the ocean over the course of a run barely affects the overall composition of the pool. 
                 However, we do see that there is increased levels of carbon in the pool in the later half of the run. 
                 For greater details on the composition of this new carbon, see Figure 8. 
-                Due to the way that ocean-atmosphere flux is currently implemented, for most time steps we only have flux from atmosphere to ocean as we take take the “overall” flux between the two pools and just move carbon in one direction. 
+                Due to the way that ocean-atmosphere flux is currently implemented, for most time steps we only have flux from atmosphere to ocean as we take the “overall” flux between the two pools and move carbon in just one direction. 
                 Since the atmosphere to ocean flux tends to be larger than ocean to atmosphere, this currently does not allow carbon originating in the ocean to percolate to other pools.  
                 Additionally, for tracking,  the ocean is currently represented as a singular pool rather than being split into four pools like in the box model.
               </figcaption>
             </div>
             <div>
-              <center><img src="ocean_top_website.png" alt="" width="530" height="350"></center>
+              <center><img src="ocean_top_website.png" alt="" width="50%"></center>
               <figcaption>
                 <b>Figure 8:</b> This graph shows the influx of carbon into the ocean pool over the course of one model run. 
                 We see that despite the amount appearing very small in Figure 7, we have actually added over 2,000 petagrams of carbon to the ocean pool. 
@@ -239,9 +241,9 @@
               </figcaption>
             </div>
             </div>
-            <center><img src="ocean_color.gif" alt="" width="450" height="550"></center>
+            <center><img src="ocean_color.gif" alt="" width="45%"</center>
             <figcaption>
-              <b>Animation 4:</b> First, not the high level of carbon stored within the ocean. 
+              <b>Animation 4:</b> First, note the high level of carbon stored within the ocean. 
               Thus, while around 2,000 petagrams are added over the course of this run, proportionally, that represents a small amount of the carbon stored within the ocean. 
               This can be seen through the slow change of the pie chart throughout the animation even as the total amount of carbon rises. 
             </figcaption>
@@ -255,7 +257,7 @@
     <h2>Conclusion and Next Steps</h2>
     <p>
       As far as we are aware, there are no other climate models-either simple or complex Earth System Models-with this type of tracking functionality. 
-      The addition of tracking to Hector thus creates a novel opportunity to explore more detailed carbon movement within the model and carryout robust benchmarking. 
+      The addition of tracking to Hector thus creates a novel opportunity to explore more detailed carbon movement within the model and carry out robust benchmarking. 
       For example, this new capability allows computation of the model's airborne fraction (Knorr 2009), a crucial carbon-cycle diagnostic that reflects how much of anthropogenic emissions remain in the atmosphere. 
       Hector's carbon tracking also provides the foundational infrastructure needed for a future implementation of radiocarbon (He 2016). 
       Additionally, tracking allows careful examination of the path and location of carbon from anthropogenic carbon sources, or natural system changes such as permafrost thaw (Woodard 2021), over time. 
